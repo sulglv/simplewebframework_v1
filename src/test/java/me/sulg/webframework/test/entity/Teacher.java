@@ -1,5 +1,7 @@
 package me.sulg.webframework.test.entity;
 
+import me.sulg.webframework.annotation.Inject;
+
 /**
  */
 public class Teacher {
@@ -7,6 +9,7 @@ public class Teacher {
 
     private String name;
 
+    @Inject
     private Student student;
 
     public Integer getId() {
