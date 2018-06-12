@@ -14,6 +14,12 @@ public class RequestDefine {
     public static final String DELETE= "delete";
 
     /**
+     * 重定向或forward
+     */
+    public static final String REDIRECT = "redirect";
+    public static final String FORWARD = "forward";
+
+    /**
      * 请求方式 GET/POST/PUT/DELETE等
      */
     private String requestMethod;

@@ -85,11 +85,14 @@ public class DispatcherServlet extends HttpServlet {
                 writer.flush();
                 writer.close();
             }else if(actionMethod.isAnnotationPresent(ResponseJsp.class)){//有ResponseJsp注解，返回JSP页面
-                //todo
-
-            }else{//默认返回
-                //todo
-
+                String[] results = ((String)result).split(":");
+                if(RequestDefine.REDIRECT.equals(results[0])){
+                    //重定向方式
+                    resp.sendRedirect(req.getContextPath() + results[1]);
+                }else{
+                    //forward方式 未实现setAttribute功能
+                    req.getRequestDispatcher(results[1]).forward(req,resp);
+                }
             }
 
         }else{//没有对应的处理器

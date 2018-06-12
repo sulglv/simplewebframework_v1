@@ -1,7 +1,9 @@
 package me.sulg.webframework.context;
 
+import me.sulg.webframework.aop.AspectProxy;
 import me.sulg.webframework.constant.ConfigConstant;
 import me.sulg.webframework.util.ConfigReader;
+import sun.reflect.generics.scope.ClassScope;
 
 import java.io.File;
 import java.io.IOException;
@@ -86,4 +88,13 @@ public class ClassContext {
         return classSet;
     }
 
+    public static Set<Class<?>> getClassSetBySuper(Class<AspectProxy> superClass) {
+        Set<Class<?>> resultSet = new HashSet<>();
+        for(Class<?> cls: CLASS_SET){
+            if(superClass.isAssignableFrom(cls) && !superClass.equals(cls)){
+                resultSet.add(cls);
+            }
+        }
+        return resultSet;
+    }
 }

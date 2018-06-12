@@ -1,5 +1,6 @@
 package me.sulg.webframework.context;
 
+import me.sulg.webframework.aop.AopLoader;
 import me.sulg.webframework.define.HandlerDefine;
 import me.sulg.webframework.define.RequestDefine;
 import me.sulg.webframework.util.IocUtil;
@@ -14,6 +15,8 @@ public final class ContextInit {
     static{
         //获取beanMap
         Map<Class<?>, Object> beanMap = BeanContext.getBeanMap();
+        //生成代理对象
+        AopLoader.createProxyBean();
         //注入
         IocUtil.doIoc(beanMap);
     }
